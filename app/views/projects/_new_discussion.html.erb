@@ -1,0 +1,16 @@
+<h2>Enter your discussion</h2>
+<%= @discussion.errors.full_messages.join(",") %>
+<%= form_for [@project, @discussion] do |f| %>
+  <div>
+      <%= f.label "Title" %>
+      <div>
+        <%= f.text_field :title %>
+      </div>
+      <%= f.label "Body" %>
+      <div>
+        <%= f.text_area :body %>
+      </div>
+    </div>
+    <%= f.submit %>
+<% end %>
+<hr>

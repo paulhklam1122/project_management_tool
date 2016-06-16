@@ -1,0 +1,12 @@
+<h1>Project Details</h1>
+<%= @project.title %><br>
+<%= @project.description %><br>
+<%= @project.due_date %><br>
+<%= link_to "Edit", edit_project_path(@project) %>
+<%= link_to "Delete", project_path(@project), method: :delete,
+                                                data: {confirm: "Are you sure?"} %>
+
+<%= render "new_discussion" %>
+<%= render "discussions" %>
+<%= render "new_task" %>
+<%= render "tasks" %>
