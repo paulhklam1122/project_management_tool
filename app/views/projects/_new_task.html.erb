@@ -1,5 +1,5 @@
-<h2>Enter your task</h2>
-<%#= @task.errors.full_messages.join(",") %>
+<h2>New Task</h2>
+<%= @task.errors.full_messages.join(",") %>
 <%= form_for [@project, @task] do |f| %>
   <div>
     <%= f.label "Body" %>

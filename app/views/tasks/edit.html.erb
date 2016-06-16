@@ -1,9 +1,12 @@
-<h1>Edit Task</h1>
-<%= @task.errors.full_messages.join(", ") %>
+<h2>Edit Task</h2>
+<%= @task.errors.full_messages.join(",") %>
 <%= form_for [@project, @task] do |f| %>
   <div>
     <%= f.label "Body" %>
-    <%= f.text_area :title %>
+    <div>
+      <%= f.text_area :title %>
+    </div>
   </div>
     <%= f.submit %>
 <% end %>
+<hr>

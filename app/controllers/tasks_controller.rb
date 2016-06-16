@@ -27,15 +27,17 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find params[:id]
+    @project = @task.project
   end
 
   def update
+    @project = Project.find params[:project_id]
     @task = Task.find params[:id]
-    task_params = params.require(:task).permit(:title, :description, :due_date)
+    task_params = params.require(:task).permit(:title, :body)
     if @task.update task_params
-      redirect_to task_path(@task)
+      redirect_to project_path(@project)
     else
-      render :edit
+      redirect_to edit_project_task_path(@project, @task)
     end
   end
 
