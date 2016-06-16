@@ -47,4 +47,11 @@ class TasksController < ApplicationController
     @task.destroy
     redirect_to project_path(@project), notice: "Task deleted!"
   end
+
+  def mark
+    @project = Project.find params[:project_id]
+    @task = Task.find params[:id]
+    Task.mark @task
+    redirect_to project_path(@project)
+  end
 end
