@@ -2,9 +2,10 @@
 
 <% @project.tasks.each do |task| %>
   <h4><%= link_to task.title, project_task_path(@project, task) %></h4>
-  <%= link_to "Edit", edit_project_task_path(@project, task) %>
-  <%= button_to "#{task.mark}", project_mark_path(@project, task), :class => "button", :method => :post %>
-  <%= link_to "Delete", project_task_path(@project, task), method: :delete,
+  <p>Created by: <%= task.user.full_name if task.user %></p>
+    <%= link_to "Edit", edit_project_task_path(@project, task) %>
+    <%= button_to "#{task.mark}", project_mark_path(@project, task), :class => "button", :method => :post %>
+    <%= link_to "Delete", project_task_path(@project, task), method: :delete,
                                                 data: {confirm: "Are you sure?"} %>
   <hr>
 <% end %>

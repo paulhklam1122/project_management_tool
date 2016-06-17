@@ -2,6 +2,7 @@
 <hr>
 <% @projects.each do |project| %>
   <%= link_to project.title, project_path(project) %>
+  <p>Created by: <%= project.user.full_name if project.user %></p>
   <hr>
 <% end %>
 <%= will_paginate @projects %>

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
   def comment_params
     params.require(:comment).permit(:body)
   end
@@ -6,6 +7,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new comment_params
     @project = Project.find params[:project_id]
     @discussion = Discussion.find params[:discussion_id]
+    @comment.user = current_user
     @comment.discussion = @discussion
     if @comment.save
       redirect_to project_discussion_path(@project, @discussion)
@@ -40,4 +42,9 @@ class CommentsController < ApplicationController
     redirect_to project_discussion_path(@project, @discussion), notice: "Comment deleted!"
   end
 
+  private
+
+  def authenticate_user!
+    redirect_to new_sessions_path, alert: "please sign in" unless user_signed_in?
+  end
 end

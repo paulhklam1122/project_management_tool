@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+    before_action :authenticate_user!, except: [:show, :index]
   def index
     @tasks = Task.order("due_date").paginate(:page => params[:page], :per_page => 10)
   end
@@ -17,6 +18,7 @@ class TasksController < ApplicationController
     task_params = params.require(:task).permit(:title, :due_date)
     @task = Task.new task_params
     @project = Project.find params[:project_id]
+    @task.user = current_user
     @task.project = @project
     if @task.save
       redirect_to project_path(@project)
@@ -53,5 +55,11 @@ class TasksController < ApplicationController
     @task = Task.find params[:id]
     Task.mark @task
     redirect_to project_path(@project)
+  end
+
+  private
+
+  def authenticate_user!
+    redirect_to new_sessions_path, alert: "please sign in" unless user_signed_in?
   end
 end

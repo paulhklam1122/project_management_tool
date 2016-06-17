@@ -1,10 +1,12 @@
 class DiscussionsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
   def review_params
     params.require(:discussion).permit(:title, :body)
   end
   def create
     @discussion = Discussion.new review_params
     @project = Project.find params[:project_id]
+    @discussion.user = current_user
     @discussion.project = @project
     if @discussion.save
       redirect_to project_path(@project)
@@ -40,5 +42,11 @@ class DiscussionsController < ApplicationController
     @discussion = Discussion.find params[:id]
     @discussion.destroy
     redirect_to project_path(@project), notice: "Review deleted!"
+  end
+
+  private
+
+  def authenticate_user!
+    redirect_to new_sessions_path, alert: "please sign in" unless user_signed_in?
   end
 end

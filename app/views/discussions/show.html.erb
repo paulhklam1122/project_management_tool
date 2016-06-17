@@ -13,6 +13,7 @@
 <% end %>
 <h4>Comments</h4>
 <% @discussion.comments.each do |comment| %>
+  <p>Created by: <%= comment.user.full_name if comment.user %></p>
   <p><%= comment.body %></p>
   <%= link_to "Edit", edit_project_discussion_comment_path(@project, @discussion, comment) %>
   <%= link_to "Delete", project_discussion_comment_path(@project, @discussion, comment), method: :delete,
