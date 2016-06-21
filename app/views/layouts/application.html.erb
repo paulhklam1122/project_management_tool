@@ -20,14 +20,15 @@
       <%= link_to "Sign In", new_sessions_path %>
     <% end %>
   </nav>
-<% if flash[:notice] %>
-  <div class="flash-notice"><%= flash[:notice] %></div>
-<% elsif flash[:alert] %>
-  <div class="flash-alert"><%= flash[:alert] %></div>
-<% end %>
-
-<hr>
-<%= yield %>
-
+  <div class="container">
+    <% if flash[:notice] %>
+      <div class="flash-notice"><%= flash[:notice] %></div>
+    <% elsif flash[:alert] %>
+      <div class="flash-alert"><%= flash[:alert] %></div>
+    <% end %>
+    <div class="content">
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>

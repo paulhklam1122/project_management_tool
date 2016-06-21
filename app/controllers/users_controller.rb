@@ -48,6 +48,18 @@ class UsersController < ApplicationController
       render :change_password
     end
   end
+  
+  def password_reset
+    @user = User.find_by_password_reset_token params[:password_reset_token]
+    if params[:new_password_reset] == params[:new_password_reset_confirmation]
+      @user.update password: params[:new_password_reset]
+      sign_in(@user)
+      redirect_to root_path, notice: "Password Successfully Reset!"
+    else
+      redirect_to new_password_reset_path(@user)
+      flash[:alert] = "Your new password and password confirmation do not match."
+    end
+  end
 
   private
 

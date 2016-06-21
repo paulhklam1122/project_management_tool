@@ -1,8 +1,9 @@
 <h1>Projects</h1>
 <hr>
 <% @projects.each do |project| %>
+<div class="project-box">
   <%= link_to project.title, project_path(project) %>
   <p>Created by: <%= project.user.full_name if project.user %></p>
-  <hr>
+</div>
 <% end %>
 <%= will_paginate @projects %>
