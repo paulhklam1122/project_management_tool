@@ -2,49 +2,73 @@ require 'rails_helper'
 
 RSpec.describe ProjectsController, type: :controller do
   # let(:project) {FactoryGirl.create(:project)}
+  let(:project) { create(:project) }
+  let(:user)     { create(:user) }
   def project
     @project ||= FactoryGirl.create(:project)
   end
   describe "#new" do
-    it "renders the new template" do
-      get :new
-      expect(response).to render_template(:new)
+    context "with user not signed in" do
+      it "redirects to the sign in page" do
+        expect(response).to redirect_to(new_sessions_path)
+      end
     end
-    it "fetches" do
-      get :new
-      expect(assigns(:project)).to be_a_new(Project)
+    context "with user signed in" do
+      before { request.session[:user_id] = user.id }
+      it "renders the new template" do
+        get :new
+        expect(response).to render_template(:new)
+      end
+      it "fetches" do
+        get :new
+        expect(assigns(:project)).to be_a_new(Project)
+      end
     end
   end
 
   describe "#create" do
-    context "valid" do
-      def valid_request
-        post :create, project: FactoryGirl.attributes_for(:project)
-      end
-      it "saves the record" do
-        count_before = Project.count
-        valid_request
-        count_after = Project.count
-        expect(count_before).to eq(count_after - 1)
-      end
-      it "redirects to the page" do
-        valid_request
-        expect(response).to redirect_to(project_path(Project.last))
+    context "with user not signed in" do
+      it "redirects to the sign in page" do
+        post :create, project: {title: "asdfasdf", body: "Hello world, I love programming.", due_date: "2019-01-01"}
+        expect(response).to redirect_to(new_sessions_path)
       end
     end
-    context "invalid" do
-      def invalid_request
-        post :create, project: {body: "aa", due_date: "2019-01-01"}
+    context "with user signed in" do
+      before { request.session[:user_id] = user.id }
+
+      context "with valid attributes" do
+        def valid_request
+          post :create, project: {title: "asdfasdf", body: "Hello world, I love programming.", due_date: "2019-01-01"}
+        end
+        it "creates the project in the database" do
+          count_before = Project.count
+          valid_request
+          count_after = Project.count
+          expect(count_after).to eq(count_before + 1)
+        end
+        it "redirects to the project show page" do
+          valid_request
+          expect(response).to redirect_to(project_path(project))
+        end
+        it "associates the project with the signed in user" do
+          valid_request
+          expect(Project.last.user).to eq(user)
+        end
       end
-      it "doesn't save the record" do
-        count_before = Project.count
-        invalid_request
-        count_after = Project.count
-        expect(count_before).to eq(count_after)
-      end
-      it "render new template " do
-        invalid_request
-        expect(response).to render_template(:new)
+      context "with invalid attributes" do
+        def invalid_request
+          post :create, project: {body: "aa", due_date: "2019-01-01"}
+        end
+        it "doesn't save the record" do
+          count_before = Project.count
+          invalid_request
+          count_after = Project.count
+          expect(count_before).to eq(count_after)
+        end
+        it "render new template " do
+          invalid_request
+          expect(response).to render_template(:new)
+        end
       end
     end
   end
@@ -89,48 +113,63 @@ RSpec.describe ProjectsController, type: :controller do
   end
 
   describe "#update" do
-    context "With valid attributes" do
-      def valid_request
-        patch :update, id: project.id, post: {title: "new valid title", description: "valid body", due_date: "2019-01-01"}
-      end
-      it "updates the record in the database" do
-        valid_request
-        expect(project.reload.title).to eq("new valid title")
-      end
-      it "redirects to the show page" do
-        valid_request
-        expect(response).to redirect_to(project_path(project))
+    context "with user not signed in" do
+      it "redirects to the sign in page" do
+        patch :update, project: {title: "asdfasdf", body: "Hello world, I love programming.", due_date: "2019-01-01"}
+        expect(response).to redirect_to(new_sessions_path)
       end
     end
+    context "with user signed in" do
+      before { request.session[:user_id] = user.id }
+      context "With valid attributes" do
+        def valid_request
+          patch :update, id: project.id, project: {title: "new valid title", description: "valid body", due_date: "2019-01-01"}
+        end
+        it "updates the record in the database" do
+          valid_request
+          expect(project.reload.title).to eq("new valid title")
+        end
+        it "redirects to the show page" do
+          valid_request
+          expect(response).to redirect_to(project_path(project))
+        end
+      end
 
-    context "With invalid attributes" do
-      def invalid_request
-        patch :update, id: post1.id, post: {title: ""}
-      end
-      it "doesn't save the updated values" do
-        invalid_request
-        expect(post1.reload.title).not_to eq("")
-      end
-      it "renders the edit template" do
-        invalid_request
-        expect(response).to render_template(:edit)
+      context "With invalid attributes" do
+        def invalid_request
+          patch :update, id: project.id, project: {title: ""}
+        end
+        it "doesn't save the updated values" do
+          invalid_request
+          expect(project.reload.title).not_to eq("")
+        end
+        it "renders the edit template" do
+          invalid_request
+          expect(response).to render_template(:edit)
+        end
       end
     end
   end
 
-  describe "#destory" do
-    #using let! forces the block to be executed before every test example regardless whether you call the method or not.
-    let!(:post) {FactoryGirl.create(:post)}
-    it "removes the record from the database" do
-      # post
-      count_before = Post.count
-      delete :destroy, id: post.id
-      count_after = Post.count
-      expect(count_before).to eq(count_after + 1)
+  describe "#destroy" do
+    let!(:project) {FactoryGirl.create(:project)}
+    context "with user not signed in" do
+      it "redirects to the sign in page" do
+        expect(response).to redirect_to(new_sessions_path)
+      end
     end
-    it "redirects to posts_path (listings page)" do
-      delete :destroy, id: post.id
-      expect(response).to redirect_to(posts_path)
+    context "with user signed in" do
+      before { request.session[:user_id] = user.id }
+      it "removed the record from the database" do
+        count_before = Project.count
+        delete :destroy, id: project.id
+        count_after = Project.count
+        expect(count_before).to eq(count_after + 1)
+      end
+      it "redirects to the products_path (listings page)" do
+        delete :destroy, id: project.id
+        expect(response).to redirect_to(projects_path)
+      end
     end
   end
 end

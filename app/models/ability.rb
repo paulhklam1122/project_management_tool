@@ -9,7 +9,7 @@ class Ability
 
       can :manage, Discussion do |dis|
         dis.user == user || dis.project.user == user
-      end      
+      end
 
       can :manage, Comment do |com|
         com.user == user || com.project.user == user
@@ -25,3 +25,4 @@ class Ability
         can :read, :all
       end
   end
+end

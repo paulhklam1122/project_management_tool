@@ -17,7 +17,7 @@ User.create(first_name: "Panda", last_name: "Panda", email: "panda@gmail.com", p
 # end
 
 User.all.each do |user|
-  50.times do
+  30.times do
       user.projects.create(title: Faker::Company.name, description: Faker::Hacker.say_something_smart + Faker::Hipster.sentence(3), due_date: Faker::Date.forward(500))
       project_user = User.all.map(&:id).sample
     end
@@ -25,7 +25,7 @@ User.all.each do |user|
 
 Project.all.each do |project|
   3.times do
-    project_discussions_user = User.all.map(&:id).sample
+    discussion_user = User.all.map(&:id).sample
     project.discussions.create(title: Faker::Commerce.product_name, body: Faker::Lorem.paragraph)
   end
 end
