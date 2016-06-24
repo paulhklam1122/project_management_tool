@@ -11,6 +11,10 @@ class Ability
         dis.user == user || dis.project.user == user
       end
 
+      can :manage, Favourite do |fav|
+        fav.user == user || fav.project.user == user
+      end
+
       can :manage, Comment do |com|
         com.user == user || com.project.user == user
       end

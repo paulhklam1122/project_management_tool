@@ -10,4 +10,5 @@ class Task < ActiveRecord::Base
       Task.update(task, :mark => "Undone")
     end
   end
+
 end

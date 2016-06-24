@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :authorize_owner, only: [:edit, :destroy, :update]
   def index
-    @projects = Project.order("due_date").paginate(:page => params[:page], :per_page => 10)
+    @projects = Project.order(created_at: :desc).page(params[:page]).per(7)
   end
 
   def show
@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    project_params = params.require(:project).permit(:title, :description, :due_date)
+    project_params = params.require(:project).permit(:title, :description, :due_date, {tag_ids: []})
     project = Project.new project_params
     project.user = current_user
     if project.save
@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
 
   def update
     # @project = Project.find params[:id]
-    project_params = params.require(:project).permit(:title, :description, :due_date)
+    project_params = params.require(:project).permit(:title, :description, :due_date, {tag_ids: []})
     if @project.update project_params
       redirect_to project_path(@project)
     else
@@ -54,10 +54,6 @@ class ProjectsController < ApplicationController
     @project = Project.find params[:id]
   end
 
-  def authenticate_user!
-    redirect_to new_sessions_path, alert: "please sign in" unless user_signed_in?
-  end
-  def authorize_owner
-    redirect_to root_path, alert: "Access Denied" unless can? :manage, @project
-  end
+
+
 end

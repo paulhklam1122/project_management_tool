@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.discussion = @discussion
     if @comment.save
+      CommentsMailer.notify_discussion_owner(@comment).deliver_now if should_notify?
       redirect_to project_discussion_path(@project, @discussion)
     else
       render "/discussions/show"
@@ -46,5 +47,9 @@ class CommentsController < ApplicationController
 
   def authenticate_user!
     redirect_to new_sessions_path, alert: "please sign in" unless user_signed_in?
+  end
+
+  def should_notify?
+    @discussion.user != current_user
   end
 end

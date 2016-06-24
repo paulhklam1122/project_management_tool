@@ -26,15 +26,19 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 1.10'
-
+gem 'kaminari'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'font-awesome-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem "faker", github: "stympy/faker"
 
-gem 'will_paginate'
+
+gem "letter_opener", group: :development
+gem 'delayed_job_active_record'
+gem 'delayed_job_web'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

@@ -3,9 +3,20 @@
 <%= @project.title %><br>
 <%= @project.description %><br>
 <%= @project.due_date %><br>
+<p>Tags: <%= @project.tags.map {|t| t.title.capitalize}.join(", ") %></p>
+<%#= link_to "New Team", new_project_team_path %>
+<%#= link_to "Edit Team", edit_project_team_path %>
+<% if @project.favourited_by?(current_user) %>
+  <%= link_to fa_icon("heart"), project_favourite_path(@project, @project.favourite_for(current_user)), method: :delete, class: "like-icon" %>
+<% else %>
+  <%= link_to fa_icon("heart-o"), project_favourites_path(@project), method: :post, class: "like-icon" %>
+<% end %>
+
+<% if can? :manage, @project %>
 <%= link_to "Edit", edit_project_path(@project) %>
 <%= link_to "Delete", project_path(@project), method: :delete,
                                                 data: {confirm: "Are you sure?"} %>
+<% end %>
 
 <%= render "new_discussion" %>
 <%= render "discussions" %>

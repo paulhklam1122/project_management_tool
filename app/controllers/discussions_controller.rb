@@ -46,7 +46,4 @@ class DiscussionsController < ApplicationController
 
   private
 
-  def authenticate_user!
-    redirect_to new_sessions_path, alert: "please sign in" unless user_signed_in?
-  end
 end

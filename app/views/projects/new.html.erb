@@ -13,5 +13,9 @@
     <%= f.label :due_date %>
     <%= f.text_area :due_date %>
   </div>
+  <div>
+    <%= f.label :tag_ids %>
+    <%= f.collection_check_boxes(:tag_ids, Tag.order(:title), :id, :title) %>
+  </div>
     <%= f.submit %>
 <% end %>

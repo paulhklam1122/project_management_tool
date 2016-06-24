@@ -16,10 +16,13 @@ Rails.application.routes.draw do
     resources :discussions do
       resources :comments
     end#, shallow: true
+    resources :favourites, only:[:create, :destroy]
     resources :tasks
     post "/tasks/:id" => "tasks#mark", as: :mark
     get :search, on: :collection
     post :flag, on: :member
     post :mark_done
+    resources :teams
   end
+  resources :favourites, only:[:index]
 end

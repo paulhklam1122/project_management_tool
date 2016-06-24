@@ -54,12 +54,13 @@ class TasksController < ApplicationController
     @project = Project.find params[:project_id]
     @task = Task.find params[:id]
     Task.mark @task
+    TasksMailer.notify_task_owner(@task).deliver_now if @task.mark == "Undone" && should_notify?
     redirect_to project_path(@project)
   end
 
   private
 
-  def authenticate_user!
-    redirect_to new_sessions_path, alert: "please sign in" unless user_signed_in?
+  def should_notify?
+    @task.user != current_user
   end
 end

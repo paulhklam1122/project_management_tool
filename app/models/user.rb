@@ -4,12 +4,16 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :nullify
   has_many :discussions, dependent: :nullify
   has_many :tasks, dependent: :nullify
+  has_many :favourites, dependent: :destroy
+  has_many :favourite_projects, through: :favourites, source: :project
+  has_many :teams, dependent: :nullify
+  has_many :project_teams, through: :teams, source: :project
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true, format: /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
   def full_name
-    "#{first_name} #{last_name}"
+    "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
   before_create { generate_token(:auth_token) }
