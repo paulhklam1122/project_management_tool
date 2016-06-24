@@ -22,7 +22,10 @@ Rails.application.routes.draw do
     get :search, on: :collection
     post :flag, on: :member
     post :mark_done
-    resources :teams
+    resources :teams, only: [:new, :create] do
+      get :edit, on: :collection
+      patch :update, on: :collection
+    end
   end
   resources :favourites, only:[:index]
 end

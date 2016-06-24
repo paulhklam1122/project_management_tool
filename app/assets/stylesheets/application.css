@@ -43,7 +43,8 @@ a:hover {
 
 a {
   text-decoration: none;
-  text-align: center
+  text-align: center;
+  color: orange
 }
 
 .field_with_errors input {
