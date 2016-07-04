@@ -12,10 +12,6 @@ User.create(first_name: "Tofu", last_name: "Tofu", email: "tofu@gmail.com", pass
 
 User.create(first_name: "Panda", last_name: "Panda", email: "panda@gmail.com", password: "p")
 
-["Books", "Music", "Movies", "Games", "Programming", "Cars", "Sports", "Electronics", "Lifestyle", "Cuisine"].each do |cat|
-  Category.create title: cat
-end
-
 User.all.each do |user|
   30.times do
       user.projects.create(title: Faker::Company.name, description: Faker::Hacker.say_something_smart + Faker::Hipster.sentence(3), due_date: Faker::Date.forward(500))
