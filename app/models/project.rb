@@ -10,6 +10,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
   validates :title, presence: true,
                     uniqueness: true
+  validates :due_date, presence: true
   validate :due_date_greater_than_today
 
   def favourited_by?(user)
@@ -24,8 +25,12 @@ class Project < ActiveRecord::Base
   private
 
   def due_date_greater_than_today
-    if due_date < Date.today
-      errors.add(:due_date, "Due date needs to be after today")
+    if due_date
+      if due_date < Date.today
+        errors.add(:due_date, "Due date needs to be after today")
+      end
+    else
+      errors.add(:due_date, "Due date required.")
     end
   end
 
