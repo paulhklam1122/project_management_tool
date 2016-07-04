@@ -1,12 +1,9 @@
 <h2>Edit Task</h2>
 <%= @task.errors.full_messages.join(",") %>
-<%= form_for [@project, @task] do |f| %>
-  <div>
-    <%= f.label "Body" %>
-    <div>
-      <%= f.text_area :title %>
-    </div>
+<%= bootstrap_form_for [@project, @task] do |f| %>
+  <div class="content text-left" >
+    <%= f.text_area :title %>
   </div>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-default btn-primary"%>
 <% end %>
 <hr>

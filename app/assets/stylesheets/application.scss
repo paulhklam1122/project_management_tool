@@ -14,63 +14,49 @@
  *= require_self
  */
 
+ @import "bootstrap";
+
  .container {
-   margin: 0;
-   /*text-align: center;*/
+   background-color: #a6d640;
  }
 
 li {
   list-style-type: none
 }
-
-nav {
-  background-color: #37a6b5;
-  font-size: 25px;
-  height: 50px;
-  padding: 20px;
-  color: white;
-  text-align: center
-}
-
-nav a {
-  text-decoration: none;
-  color: white;
-}
-
-a:hover {
-  color: #1d369f;
-}
-
-a {
-  text-decoration: none;
-  text-align: center;
-  color: orange
-}
-
+//
+// a:hover {
+//   color: #1d369f;
+// }
+//
+// a {
+//   text-decoration: none;
+//   text-align: center;
+//   color: orange
+// }
+//
 .field_with_errors input {
   border-color: red
 }
-
+//
 body {
-  margin: 0;
-  font-family: sans-serif;
-  color: blue;
+  background-image: url("PM.jpg");
+  z-index: 0;
 }
 
-.content {
+
+.jumbotron {
   max-width: 80%;
   margin: auto;
-  text-align: center;
 }
-
-.page_counter {
-  text-align: left;
-  margin: 30px 20px 0px 0px;
-}
-
-.posts_list {
-  margin-top: 30px;
-}
+//
+// .page_counter {
+//   text-align: left;
+//   margin: 30px 20px 0px 0px;
+// }
+//
+// .posts_list {
+//   margin-top: 30px;
+// }
 
 .flash-notice {
   width: 100%;
@@ -84,7 +70,25 @@ body {
   background-color: red;
 }
 
-.project-box {
-  border: 2px blue solid;
-  display:inline-block;
+#nav-title {
+  color: #6a941b;
+  background-color: white;
 }
+
+.navbar.navbar-default.navbar-fixed-top li a{
+    color: #182b69;
+}
+
+.control-label {
+  display: block;
+}
+
+.checkbox {
+  display: inline;
+  margin: 5px;
+}
+
+// .project-box {
+//   border: 2px blue solid;
+//   display:inline-block;
+// }

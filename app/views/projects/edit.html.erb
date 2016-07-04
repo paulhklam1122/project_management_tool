@@ -1,17 +1,10 @@
 <h1>Edit Project</h1>
 <%= @project.errors.full_messages.join(", ") %>
-<%= form_for @project do |f| %>
-  <div>
-    <%= f.label :title %>
+<%= bootstrap_form_for @project do |f| %>
+  <div class="content text-left" >
     <%= f.text_area :title %>
-  </div>
-  <div>
-    <%= f.label :description %>
     <%= f.text_area :description %>
-  </div>
-  <div>
-    <%= f.label :due_date %>
     <%= f.text_area :due_date %>
   </div>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-default btn-primary" %>
 <% end %>

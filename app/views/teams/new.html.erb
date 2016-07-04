@@ -1,7 +1,8 @@
 <h1>New team</h1>
 <h1>Enter member's first name!!!</h1>
-<%= form_tag project_teams_path do %>
-  <%= label_tag :users %>
-  <%= text_area_tag :users %>
-  <%= submit_tag %>
+<%= bootstrap_form_tag url: project_teams_path do |f|%>
+  <div class="content text-left">
+    <%= f.text_area :users %>
+    <%= f.submit "Create Team", class: "btn btn-default btn-primary" %>
+  </div>
 <% end %>
