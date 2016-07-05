@@ -1,7 +1,7 @@
 <h1>Edit Project</h1>
 <%= @project.errors.full_messages.join(", ") %>
 <%= bootstrap_form_for @project do |f| %>
-  <div class="content text-left" >
+  <div class="text-left" >
     <%= f.text_area :title %>
     <%= f.text_area :description %>
     <%= f.text_area :due_date %>

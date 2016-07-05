@@ -1,7 +1,7 @@
 <h2>Enter your discussion</h2>
 <%= @discussion.errors.full_messages.join(",") %>
 <%= bootstrap_form_for [@project, @discussion] do |f| %>
-  <div class="content text-left" >
+  <div class="text-left" >
     <%= f.text_field :title %>
     <%= f.text_area :body %>
     </div>

@@ -14,49 +14,48 @@
  *= require_self
  */
 
+ //Import bootstrap-sprockets
+ @import "bootstrap-sprockets";
+
+ // Import cerulean variables
+ @import "bootswatch/cerulean/variables";
+
+ // Then bootstrap itself
  @import "bootstrap";
 
- .container {
-   background-color: #a6d640;
- }
+ // Bootstrap body padding for fixed navbar
+ body { padding-top: 60px; }
+
+ // And finally bootswatch style itself
+ @import "bootswatch/cerulean/bootswatch";
+
+html {
+  height: 100%;
+}
+
+.container {
+  //  background-color: #a6d640;
+}
 
 li {
   list-style-type: none
 }
-//
-// a:hover {
-//   color: #1d369f;
-// }
-//
-// a {
-//   text-decoration: none;
-//   text-align: center;
-//   color: orange
-// }
-//
+
 .field_with_errors input {
   border-color: red
 }
 //
 body {
   background-image: image-url("PM.jpg");
-  z-index: 0;
+  // background-color: #a6d640 !important;
 }
 
 
 .jumbotron {
-  max-width: 80%;
-  margin: auto;
+    max-width: 80%;
+    margin: auto;
+  background-color: #a6d640 !important;
 }
-//
-// .page_counter {
-//   text-align: left;
-//   margin: 30px 20px 0px 0px;
-// }
-//
-// .posts_list {
-//   margin-top: 30px;
-// }
 
 .flash-notice {
   width: 100%;
@@ -73,11 +72,13 @@ body {
 #nav-title {
   color: #6a941b;
   background-color: white;
+  font-family: Chewy;
 }
 
 .navbar.navbar-default.navbar-fixed-top li a{
     color: #182b69;
 }
+
 
 .control-label {
   display: block;
@@ -87,8 +88,3 @@ body {
   display: inline;
   margin: 5px;
 }
-
-// .project-box {
-//   border: 2px blue solid;
-//   display:inline-block;
-// }

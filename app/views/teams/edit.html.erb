@@ -1,7 +1,7 @@
 <h1>Edit team</h1>
 <h1>Enter member's first name!!!</h1>
 <%= bootstrap_form_tag url: project_teams_path, method: :patch do |f|%>
-  <div class="content text-left" >
+  <div class="text-left" >
     <%= f.text_area :users %>
     <%= f.submit "Update Team", class: "btn btn-default btn-primary"%>
   </div>
