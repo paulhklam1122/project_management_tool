@@ -1,0 +1,7 @@
+var $newTask = $("<%= j(render('/tasks/task', {task: @task})) %>")
+$('#tasks').prepend($newTask)
+
+$newTask.hide().slideDown(1000);
+
+<% @task = Task.new %>
+$('#task-form').html('<%= j render "form" %>')

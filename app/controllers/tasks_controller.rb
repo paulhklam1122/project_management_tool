@@ -20,16 +20,23 @@ class TasksController < ApplicationController
     @project = Project.find params[:project_id]
     @task.user = current_user
     @task.project = @project
-    if @task.save
-      redirect_to project_path(@project)
-    else
-      render "/projects/show"
+    respond_to do |format|
+      if @task.save
+        format.html {redirect_to project_path(@project), notice: "Task created!"}
+        format.js {render :create_success}
+      else
+        format.html {render "/projects/show"}
+        format.js {render :create_failure}
+      end
     end
   end
 
   def edit
     @task = Task.find params[:id]
     @project = @task.project
+    respond_to do |format|
+      format.js {render :edit_toggle}
+    end
   end
 
   def update
@@ -47,15 +54,21 @@ class TasksController < ApplicationController
     @project = Project.find params[:project_id]
     @task = Task.find params[:id]
     @task.destroy
-    redirect_to project_path(@project), notice: "Task deleted!"
+    respond_to do |format|
+      format.html {redirect_to project_path(@project), notice: "Task deleted!"}
+      format.js {render}
+    end
   end
 
   def mark
     @project = Project.find params[:project_id]
     @task = Task.find params[:id]
     Task.mark @task
-    TasksMailer.notify_task_owner(@task).deliver_now if @task.mark == "Undone" && should_notify?
-    redirect_to project_path(@project)
+    respond_to do |format|
+    # TasksMailer.notify_task_owner(@task).deliver_now if @task.mark == "Undone" && should_notify?
+      format.html {redirect_to project_path(@project)}
+      format.js {render}
+    end
   end
 
   private

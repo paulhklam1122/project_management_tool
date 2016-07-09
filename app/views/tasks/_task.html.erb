@@ -1,0 +1,17 @@
+<script>
+  $(document).ready(function(){
+    $('.edit-task').hide(0);
+  });
+</script>
+<div id='<%= dom_id(task) %>'>
+  <h4><%= link_to task.title, project_task_path(@project, task) %></h4>
+  <p>Created by: <%= task.user.full_name if task.user %></p>
+    <%= link_to "Edit", edit_project_task_path(@project, task), remote: true, class: "edit-button" %>
+    <%= button_to "#{task.mark}", project_mark_path(@project, task), :class => "button", :method => :post, remote: true %>
+    <%= link_to "Delete", project_task_path(@project, task), method: :delete, remote: true,
+                                                data: {confirm: "Are you sure?"} %>
+  <div class="edit-task">
+    <%= render "tasks/edit", task: task, project: @project %>
+  </div>
+  <hr>
+</div>

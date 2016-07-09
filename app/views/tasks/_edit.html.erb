@@ -1,0 +1,9 @@
+<h2>Edit Task</h2>
+<%= @task.errors.full_messages.join(",") %>
+<%= bootstrap_form_for [@project, task], remote: true do |f| %>
+  <div class="text-left" >
+    <%= f.text_area :title %>
+  </div>
+    <%= f.submit class: "btn btn-default btn-primary"%>
+<% end %>
+<hr>

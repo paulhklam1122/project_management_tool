@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+.class ProjectsController < ApplicationController
   before_action :find_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
   before_action :authorize_owner, only: [:edit, :destroy, :update]
@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
     @project = Project.new project_params
     @project.user = current_user
     if @project.save
-      redirect_to project_path(project)
+      redirect_to project_path(@project)
     else
       render :new
     end

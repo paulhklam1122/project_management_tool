@@ -27,8 +27,8 @@
       </ul>
         <ul class="nav navbar-nav pull-right">
           <% if user_signed_in? %>
-          <li><%= link_to "Signed in as: #{current_user.full_name}", edit_user_path(session[:user_id]) %></li>
           <li><%= link_to "Favourite Projects", favourites_path %></li>
+          <li><%= link_to "Signed in as: #{current_user.full_name}", edit_user_path(session[:user_id]) %></li>
           <li><%= link_to "Sign Out", sessions_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Sign Up", new_user_path %></li>
