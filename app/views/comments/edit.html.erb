@@ -1,8 +1,10 @@
-<h1>Edit Comment</h1>
-<%= @comment.errors.full_messages.join(", ") %>
-<%= bootstrap_form_for [@project, @discussion, @comment] do |f| %>
-<div class="text-left" >
-    <%= f.text_area :body %>
-  </div>
-    <%= f.submit class: "btn btn-default btn-primary" %>
-<% end %>
+<div class="container">
+  <h1>Edit Comment</h1>
+  <%= @comment.errors.full_messages.join(", ") %>
+  <%= bootstrap_form_for [@project, @discussion, @comment] do |f| %>
+  <div class="text-left" >
+      <%= f.text_area :body %>
+    </div>
+      <%= f.submit class: "btn btn-default btn-primary" %>
+  <% end %>
+</div>

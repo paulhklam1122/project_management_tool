@@ -25,10 +25,12 @@
  @import "bootstrap";
 
  // Bootstrap body padding for fixed navbar
- body { padding-top: 60px; }
+ body {
+   padding-top: 50px;
+ }
 
  // And finally bootswatch style itself
- @import "bootswatch/cerulean/bootswatch";
+@import "bootswatch/cerulean/bootswatch";
 
 @import url(https://fonts.googleapis.com/css?family=Chewy);
 
@@ -37,7 +39,14 @@ html {
 }
 
 .container {
-  //  background-color: #a6d640;
+  text-align: center;
+  background-color: #FF9600;
+}
+
+.navbar.navbar-default.navbar-fixed-top {
+  .container {
+    background-color: #37A7E7;
+  }
 }
 
 li {
@@ -47,18 +56,29 @@ li {
 .field_with_errors input {
   border-color: red
 }
-//
+
 body {
   background-image: image-url("PM.jpg");
-  // background-color: #a6d640 !important;
 }
 
 
 .jumbotron {
-  max-width: 80%;
+  max-width: 100%;
   margin: auto;
   background-color: #a6d640 !important;
   background: transparent;
+}
+
+html, body {
+  height:100%;
+}
+
+.special,.special .jumbotron {
+  height:100%;
+}
+
+.navbar-collapse.collapse.in {
+  text-align: center;
 }
 
 .flash-notice {
@@ -79,17 +99,23 @@ body {
   font-family: Chewy;
 }
 
+.navbar.navbar-dark.bg-primary.navbar-fixed-top {
+  height: 20px;
+}
+
 .navbar.navbar-dark.bg-primary.navbar-fixed-top li a{
   color: white;
+  padding-bottom: 0px;
 }
 
 .navbar.navbar-dark.bg-primary.navbar-fixed-top li a:hover {
   background-color: #0038ff;
+  padding-bottom: 0px;
+  height: 100%
 }
 
-.nav.navbar-nav.navbar-right {
-  margin-right: 20px;
-  margin-top: 10px;
+.nav.navbar-nav.navbar-right button {
+  margin: 5px;
 }
 
 .control-label {

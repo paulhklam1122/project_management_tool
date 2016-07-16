@@ -1,8 +1,11 @@
-<h1>Enter a New Password</h1>
-<%= bootstrap_form_tag url: password_reset_path(params[:id]), method: :patch do |f|%>
-  <div class="text-left" >
-    <%= f.password_field :password %>
-    <%= password_field :password_confirmation %>
-<%= f.submit "Reset Password", class: "btn btn-default btn-primary" %>
-<% end %>
+<div class="container">
+  <h1>Enter a New Password</h1>
+  <%= bootstrap_form_tag url: password_reset_path(params[:id]), method: :patch do |f|%>
+    <div class="text-left" >
+      <%= f.password_field :password %>
+      <%= password_field :pa
+      ssword_confirmation %>
+  <%= f.submit "Reset Password", class: "btn btn-default btn-primary" %>
+  <% end %>
+  </div>
 </div>
