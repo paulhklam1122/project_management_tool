@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624051340) do
+ActiveRecord::Schema.define(version: 20160715025824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,7 +128,14 @@ ActiveRecord::Schema.define(version: 20160624051340) do
     t.boolean  "account_lockout",        default: false
     t.boolean  "is_admin",               default: false
     t.string   "auth_token"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "github_token"
+    t.string   "github_secret"
+    t.text     "github_raw_data"
   end
+
+  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", using: :btree
 
   add_foreign_key "comments", "discussions"
   add_foreign_key "comments", "users"

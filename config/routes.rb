@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     delete :destroy, on: :collection
   end
 
+  get "/auth/github", as: :sign_in_with_github
+  get "/auth/github/callback" => "callbacks#github"
+
+
   get "/changepassword" => "users#change_password", as: :change_password
   patch "/changepassword" => "users#update_password"
 

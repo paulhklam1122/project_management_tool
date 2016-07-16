@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require font-awesome
+ *= require bootstrap-social
  *= require_tree .
  *= require_self
  */
@@ -78,10 +79,18 @@ body {
   font-family: Chewy;
 }
 
-.navbar.navbar-default.navbar-fixed-top li a{
-    color: #182b69;
+.navbar.navbar-dark.bg-primary.navbar-fixed-top li a{
+  color: white;
 }
 
+.navbar.navbar-dark.bg-primary.navbar-fixed-top li a:hover {
+  background-color: #0038ff;
+}
+
+.nav.navbar-nav.navbar-right {
+  margin-right: 20px;
+  margin-top: 10px;
+}
 
 .control-label {
   display: block;
@@ -90,4 +99,10 @@ body {
 .checkbox {
   display: inline;
   margin: 5px;
+}
+
+.btn.btn-social.btn-github {
+  width: 190px;
+  padding-right: 0px;
+  padding-left: 30px;
 }
