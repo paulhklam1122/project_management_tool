@@ -1,11 +1,11 @@
 <h1>Edit User Information</h1>
 <%= @user.errors.full_messages.join(", ") %>
-<%= bootstrap_form_for @user do |f| %>
+<%= simple_form_for @user do |f| %>
   <div class="text-left" >
-    <%= f.text_field :first_name %>
-    <%= f.text_field :last_name %>
-    <%= f.email_field :email %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :email %>
   </div>
-  <%= f.submit class: "btn btn-default btn-primary" %>
+  <%= f.button :submit, class: "btn btn-default btn-primary" %>
   <%= link_to "Change Password", change_password_path %>
 <% end %>

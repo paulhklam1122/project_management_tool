@@ -1,12 +1,12 @@
 <div class="container">
   <h1>Edit Project</h1>
   <%= @project.errors.full_messages.join(", ") %>
-  <%= bootstrap_form_for @project do |f| %>
+  <%= simple_form_for @project do |f| %>
     <div class="text-left" >
-      <%= f.text_area :title %>
-      <%= f.text_area :description %>
-      <%= f.text_area :due_date %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :due_date %>
     </div>
-      <%= f.submit class: "btn btn-default btn-primary" %>
+      <%= f.button :submit, class: "btn btn-default btn-primary" %>
   <% end %>
 </div>

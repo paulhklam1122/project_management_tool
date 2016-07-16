@@ -5,11 +5,11 @@
   <%= link_to "Go Back", project_path(@project) %>
   <h2>Enter your comments</h2>
   <%= @comment.errors.full_messages.join(",") %>
-  <%= bootstrap_form_for [@project, @discussion, @comment] do |f| %>
+  <%= simple_form_for [@project, @discussion, @comment] do |f| %>
     <div class="text-left" >
-      <%= f.text_area :body %>
+      <%= f.input :body %>
     </div>
-    <%= f.submit class: "btn btn-default btn-primary" %>
+    <%= f.button :submit, class: "btn btn-default btn-primary" %>
   <% end %>
   <h4>Comments</h4>
   <% @discussion.comments.each do |comment| %>

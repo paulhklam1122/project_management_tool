@@ -33,12 +33,10 @@
   <%= render "new_discussion" %>
   <%= render "discussions" %>
 
-  <h2>New Task</h2>
   <div id="task-form">
     <%= render "tasks/form" %>
   </div>
 
-  <h2>Tasks</h2>
   <div id="tasks">
     <% @project.tasks.each do |task| %>
       <%= render "/tasks/task", task: task %>

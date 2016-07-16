@@ -25,22 +25,25 @@
  @import "bootstrap";
 
  // Bootstrap body padding for fixed navbar
- body {
-   padding-top: 50px;
- }
 
  // And finally bootswatch style itself
 @import "bootswatch/cerulean/bootswatch";
 
 @import url(https://fonts.googleapis.com/css?family=Chewy);
 
-html {
+
+html, body {
   height: 100%;
 }
 
 .container {
   text-align: center;
-  background-color: #FF9600;
+  min-height: 100%;
+}
+
+.content {
+ min-height: 100%;
+ padding-top: 50px;
 }
 
 .navbar.navbar-default.navbar-fixed-top {
@@ -55,26 +58,6 @@ li {
 
 .field_with_errors input {
   border-color: red
-}
-
-body {
-  background-image: image-url("PM.jpg");
-}
-
-
-.jumbotron {
-  max-width: 100%;
-  margin: auto;
-  background-color: #a6d640 !important;
-  background: transparent;
-}
-
-html, body {
-  height:100%;
-}
-
-.special,.special .jumbotron {
-  height:100%;
 }
 
 .navbar-collapse.collapse.in {
@@ -95,8 +78,9 @@ html, body {
 
 #nav-title {
   color: #6a941b;
-  background-color: white;
+  background-color: #2B2B2B;
   font-family: Chewy;
+  border-radius: 50%;
 }
 
 .navbar.navbar-dark.bg-primary.navbar-fixed-top {
@@ -131,4 +115,26 @@ html, body {
   width: 190px;
   padding-right: 0px;
   padding-left: 30px;
+}
+
+footer {
+  padding: 25px 0;
+  text-align: center;
+  width: 100%;
+  background: #2A2A2A;
+  color: #fff;
+  overflow: hidden;
+  position: relative;;
+  bottom: 0px;
+  margin-bottom: 0px;
+}
+
+footer a {
+ font-size: 15px;
+ color: #555;
+}
+
+footer a:hover {
+ color: #fff;
+ text-decoration: none;
 }

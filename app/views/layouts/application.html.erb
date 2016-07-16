@@ -9,11 +9,43 @@
 </head>
   <body>
     <%= render "layouts/navbar" %>
-    <% if flash[:notice] %>
-    <div class="flash-notice"><%= flash[:notice] %></div>
-    <% elsif flash[:alert] %>
-    <div class="flash-alert"><%= flash[:alert] %></div>
-    <% end %>
-    <%= yield %>
+    <div class="content">
+      <% if flash[:notice] %>
+      <div class="flash-notice"><%= flash[:notice] %></div>
+      <% elsif flash[:alert] %>
+      <div class="flash-alert"><%= flash[:alert] %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+
+    <footer>
+      <div class="row">
+        <div class="col-md-4">
+          <ul><%= link_to "About Me", about_path %></ul>
+          <ul><%= link_to "Sign In", new_sessions_path %></ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline social-buttons">
+            <li><a href="https://twitter.com/paulhklam" target="_blank"><i class="fa fa-twitter fa-lg"></i></a>
+            </li>
+            <li><a href="https://www.facebook.com/profile.php?id=1638930019" target="_blank"><i class="fa fa-facebook fa-lg"></i></a>
+            </li>
+            <li><a href="Public Profilehttps://ca.linkedin.com/in/paulhklam" target="_blank"><i class="fa fa-linkedin fa-lg"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline quicklinks">
+            <li><a href="https://codecore.ca/program_applications/new" target="_blank">Contact CodeCore</a>
+            </li>
+            <li><a href="https://codecore.ca/policies" target="_blank">Privacy Policy</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-12">
+          <span class="copyright">Copyright &copy; Paul Lam <br />Cohort 13 CodeCore 2016</span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
