@@ -9,11 +9,15 @@ class CommentsController < ApplicationController
     @discussion = Discussion.find params[:discussion_id]
     @comment.user = current_user
     @comment.discussion = @discussion
-    if @comment.save
-      CommentsMailer.notify_discussion_owner(@comment).deliver_now if should_notify?
-      redirect_to project_discussion_path(@project, @discussion)
-    else
-      render "/discussions/show"
+    # respond_to do |format|
+      if @comment.save
+        # CommentsMailer.notify_discussion_owner(@comment).deliver_now if should_notify?
+        format.html {redirect_to project_discussion_path(@project, @discussion)}
+        # format.js {render :create_success}
+      else
+        format.html {render "/discussions/show"}
+        # format.js {render :create_failure}
+      # end
     end
   end
 
@@ -21,6 +25,9 @@ class CommentsController < ApplicationController
     @project = Project.find params[:project_id]
     @discussion = Discussion.find params[:discussion_id]
     @comment = Comment.find params[:id]
+    respond_to do |format|
+      format.js {render :edit_toggle}
+    end
   end
 
   def update

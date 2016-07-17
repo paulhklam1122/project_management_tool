@@ -43,10 +43,14 @@ class TasksController < ApplicationController
     @project = Project.find params[:project_id]
     @task = Task.find params[:id]
     task_params = params.require(:task).permit(:title, :body)
-    if @task.update task_params
-      redirect_to project_path(@project)
-    else
-      redirect_to edit_project_task_path(@project, @task)
+    respond_to do |format|
+      if @task.update task_params
+        format.html {redirect_to project_path(@project)}
+        format.js {render :update_success}
+      else
+        format.html {redirect_to edit_project_task_path(@project, @task)}
+        format.js {render :update_failure}
+      end
     end
   end
 
@@ -65,7 +69,7 @@ class TasksController < ApplicationController
     @task = Task.find params[:id]
     Task.mark @task
     respond_to do |format|
-    # TasksMailer.notify_task_owner(@task).deliver_now if @task.mark == "Undone" && should_notify?
+    TasksMailer.notify_task_owner(@task).deliver_now if @task.mark == "Undone" && should_notify?
       format.html {redirect_to project_path(@project)}
       format.js {render}
     end

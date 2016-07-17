@@ -1,0 +1,9 @@
+<h2>Enter your comments</h2>
+<%= @comment.errors.full_messages.join(",") %>
+<%= simple_form_for [@project, @discussion, @comment], remote: true do |f| %>
+  <div class="text-left" >
+    <%= f.input :body %>
+  </div>
+  <%= f.button :submit, class: "btn btn-default btn-primary", remote: true %>
+<% end %>
+<hr>

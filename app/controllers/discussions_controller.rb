@@ -8,26 +8,37 @@ class DiscussionsController < ApplicationController
     @project = Project.find params[:project_id]
     @discussion.user = current_user
     @discussion.project = @project
-    if @discussion.save
-      redirect_to project_path(@project)
-    else
-      render "/projects/show"
+    respond_to do |format|
+      if @discussion.save
+        format.html {redirect_to project_path(@project)}
+        format.js {render :create_success}
+      else
+        format.html {render "/projects/show"}
+        format.js {render :create_failure}
+      end
     end
   end
 
   def edit
     @discussion = Discussion.find params[:id]
     @project = @discussion.project
+    respond_to do |format|
+      format.js {render :edit_toggle}
+    end
   end
 
   def update
     @project = Project.find params[:project_id]
     @discussion = Discussion.find params[:id]
     discussion_params = params.require(:discussion).permit(:title, :body)
-    if @discussion.update discussion_params
-      redirect_to project_path(@project)
-    else
-      redirect_to edit_project_discussion_path(@project, @discussion)
+    respond_to do |format|
+      if @discussion.update discussion_params
+        format.html {redirect_to project_path(@project)}
+        format.js {render :update_success}
+      else
+        format.html {redirect_to edit_project_discussion_path(@project, @discussion)}
+        format.js {render :update_failure}
+      end
     end
   end
 
@@ -41,9 +52,9 @@ class DiscussionsController < ApplicationController
     @project = Project.find params[:project_id]
     @discussion = Discussion.find params[:id]
     @discussion.destroy
-    redirect_to project_path(@project), notice: "Review deleted!"
+    respond_to do |format|
+      format.html {redirect_to project_path(@project), notice: "Review deleted!"}
+      format.js {render}
+    end
   end
-
-  private
-
 end

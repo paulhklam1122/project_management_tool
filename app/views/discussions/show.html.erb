@@ -1,23 +1,17 @@
 <div class="container">
-  <h1>Discussion Details</h1>
-  <%= @discussion.title %><br>
-  <%= @discussion.body %><br>
-  <%= link_to "Go Back", project_path(@project) %>
-  <h2>Enter your comments</h2>
-  <%= @comment.errors.full_messages.join(",") %>
-  <%= simple_form_for [@project, @discussion, @comment] do |f| %>
-    <div class="text-left" >
-      <%= f.input :body %>
+    <h1>Discussion Details</h1>
+    <h2><%= @discussion.title %></h2><br>
+    <%= @discussion.body %><br>
+    <%= link_to "Go Back", project_path(@project) %>
+
+    <div id="comment-form">
+      <%= render "comments/form" %>
     </div>
-    <%= f.button :submit, class: "btn btn-default btn-primary" %>
-  <% end %>
-  <h4>Comments</h4>
-  <% @discussion.comments.each do |comment| %>
-    <p>Created by: <%= comment.user.full_name if comment.user %></p>
-    <p><%= comment.body %></p>
-    <%= link_to "Edit", edit_project_discussion_comment_path(@project, @discussion, comment) %>
-    <%= link_to "Delete", project_discussion_comment_path(@project, @discussion, comment), method: :delete,
-                                                  data: {confirm: "Are you sure?"} %>
-    <hr>
-  <% end %>
+
+    <h4>Comments</h4>
+    <div id="comments">
+      <% @discussion.comments.each do |comment| %>
+        <%= render "comments/comment", discussion: @discussion, comment: comment %>
+    <% end %>
+  </div>
 </div>

@@ -1,11 +1,11 @@
 <div class="container">
   <h1>Edit Discussion</h1>
   <%= @discussion.errors.full_messages.join(", ") %>
-  <%= simple_form_for [@project, @discussion] do |f| %>
+  <%= simple_form_for [@project, discussion], remote: true do |f| %>
     <div class="text-left" >
       <%= f.input :title %>
       <%= f.input :body %>
     </div>
-      <%= f.button :submit, class: "btn btn-default btn-primary"%>
+      <%= f.button :submit, class: "btn btn-default btn-primary" %>
   <% end %>
 </div>

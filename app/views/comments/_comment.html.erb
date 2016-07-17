@@ -1,0 +1,17 @@
+<script>
+  $(document).ready(function(){
+    $('.edit-comment').hide(0);
+  });
+</script>
+<div id='<%= dom_id(comment) %>'>
+  <p>Created by: <%= comment.user.full_name if comment.user %></p>
+  <p><%= comment.body %></p>
+  <%= link_to "Edit", edit_project_discussion_comment_path(@project, @discussion, comment), class: "edit-button",  remote: true %>
+  <%= link_to "Delete", project_discussion_comment_path(@project, @discussion, comment), method: :delete, remote: true, data: {confirm: "Are you sure?"} %>
+
+
+  <div class="edit-comment">
+    <%= render "comments/edit", comment: comment, discussion: @discussion, project: @project %>
+  </div>
+  <hr>
+</div>

@@ -3,7 +3,6 @@
     $('.edit-task').hide(0);
   });
 </script>
-<h2>Tasks</h2>
 <div id='<%= dom_id(task) %>'>
   <h4><%= link_to task.title, project_task_path(@project, task) %></h4>
   <p>Created by: <%= task.user.full_name if task.user %></p>

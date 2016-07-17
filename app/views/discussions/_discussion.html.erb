@@ -1,0 +1,14 @@
+<script>
+  $(document).ready(function(){
+    $('.edit-discussion').hide(0);
+  });
+</script>
+<div id='<%= dom_id(discussion) %>'>
+<h4><%= link_to discussion.title, project_discussion_path(@project, discussion) %></h4>
+<p>Created by: <%= discussion.user.full_name if discussion.user %></p>
+<%= link_to "Edit", edit_project_discussion_path(@project, discussion), remote: true, class: "edit-button"  %>
+<%= link_to "Delete", project_discussion_path(@project, discussion), method: :delete, remote: true, data: {confirm: "Are you sure?"} %>
+
+<div class="edit-discussion">
+  <%= render "discussions/edit", discussion: discussion, project: @project %>
+</div>

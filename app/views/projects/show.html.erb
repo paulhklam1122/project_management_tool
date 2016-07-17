@@ -30,16 +30,29 @@
                                                   data: {confirm: "Are you sure?"} %>
   <% end %>
 
-  <%= render "new_discussion" %>
-  <%= render "discussions" %>
+  <div id="discussion-form">
+      <%= render "discussions/form" %>
+  </div>
+
+  <% if @project.discussions.exists? %>
+    <h2>Discussions</h2>
+  <% end %>
+  <div id="discussions">
+    <% @project.discussions.each do |discussion| %>
+      <%= render "discussions/discussion", discussion: discussion %>
+    <% end %>
+  </div>
 
   <div id="task-form">
     <%= render "tasks/form" %>
   </div>
 
+  <% if @project.tasks.exists? %>
+    <h2>Tasks</h2>
+  <% end %>
   <div id="tasks">
     <% @project.tasks.each do |task| %>
-      <%= render "/tasks/task", task: task %>
+      <%= render "tasks/task", task: task %>
     <% end %>
   </div>
 </div>

@@ -1,9 +1,11 @@
+<div class="container">
 <h2>Edit Task</h2>
 <%= @task.errors.full_messages.join(",") %>
 <%= simple_form_for [@project, task], remote: true do |f| %>
   <div class="text-left" >
     <%= f.input :title %>
   </div>
-    <%= f.button :submit, class: "btn btn-default btn-primary"%>
+    <%= f.button :submit, class: "btn btn-default btn-primary", remote: true %>
 <% end %>
 <hr>
+</div>

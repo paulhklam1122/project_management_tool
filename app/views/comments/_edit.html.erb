@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Edit Comment</h1>
   <%= @comment.errors.full_messages.join(", ") %>
-  <%= simple_form_for [@project, @discussion, @comment] do |f| %>
+  <%= simple_form_for [@project, @discussion, @comment], remote: true do |f| %>
   <div class="text-left" >
       <%= f.input :body %>
     </div>
