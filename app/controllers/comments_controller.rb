@@ -9,15 +9,15 @@ class CommentsController < ApplicationController
     @discussion = Discussion.find params[:discussion_id]
     @comment.user = current_user
     @comment.discussion = @discussion
-    # respond_to do |format|
+    respond_to do |format|
       if @comment.save
         # CommentsMailer.notify_discussion_owner(@comment).deliver_now if should_notify?
         format.html {redirect_to project_discussion_path(@project, @discussion)}
-        # format.js {render :create_success}
+        format.js {render :create_success}
       else
         format.html {render "/discussions/show"}
-        # format.js {render :create_failure}
-      # end
+        format.js {render :create_failure}
+      end
     end
   end
 
@@ -35,10 +35,14 @@ class CommentsController < ApplicationController
     @discussion = Discussion.find params[:discussion_id]
     @comment = Comment.find params[:id]
     comment_params = params.require(:comment).permit(:body)
-    if @comment.update comment_params
-      redirect_to project_discussion_path(@project, @discussion)
-    else
-      redirect_to edit_project_discussion_comment_path(@project, @discussion, @comment)
+    respond_to do |format|
+      if @comment.update comment_params
+        format.html {redirect_to project_discussion_path(@project, @discussion)}
+        format.js {render :update_success}
+      else
+        format.html {redirect_to edit_project_discussion_comment_path(@project, @discussion, @comment)}
+        format.js {render :update_faliure}
+      end
     end
   end
 
@@ -47,7 +51,10 @@ class CommentsController < ApplicationController
     @discussion = Discussion.find params[:discussion_id]
     @comment = Comment.find params[:id]
     @comment.destroy
-    redirect_to project_discussion_path(@project, @discussion), notice: "Comment deleted!"
+    respond_to do |format|
+      format.html {redirect_to project_discussion_path(@project, @discussion), notice: "Comment deleted!"}
+      format.js {render}
+    end
   end
 
   private

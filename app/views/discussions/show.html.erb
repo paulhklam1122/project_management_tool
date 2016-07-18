@@ -7,11 +7,12 @@
     <div id="comment-form">
       <%= render "comments/form" %>
     </div>
-
+  <% if @discussion.comments.exists? %>
     <h4>Comments</h4>
-    <div id="comments">
-      <% @discussion.comments.each do |comment| %>
-        <%= render "comments/comment", discussion: @discussion, comment: comment %>
+  <% end %>
+  <div id="comments">
+    <% @discussion.comments.each do |comment| %>
+      <%= render "comments/comment", comment: comment %>
     <% end %>
   </div>
 </div>
