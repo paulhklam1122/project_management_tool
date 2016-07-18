@@ -1,10 +1,12 @@
-<h1>Projects</h1>
-<hr>
-<%= paginate @projects %><br />
-<% @projects.each do |project| %>
-<div class="project-box">
-  <div class="list-group-item col-md-3 col-sm-4 col-xs-12"><%= link_to project.title, project_path(project) %>
-  <p>Created by: <%= project.user.full_name if project.user %></p>
+<div class="container">
+  <h1>Projects</h1>
+  <hr>
+  <%= paginate @projects %><br />
+  <% @projects.each do |project| %>
+  <div class="project-box">
+    <div class="list-group-item col-md-3 col-sm-4 col-xs-12"><%= link_to project.title, project_path(project) %>
+    <p>Created by: <%= project.user.full_name if project.user %></p>
+    </div>
   </div>
+  <% end %>
 </div>
-<% end %>

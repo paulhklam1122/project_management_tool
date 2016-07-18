@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require font-awesome
+ *= require bootstrap-social
  *= require_tree .
  *= require_self
  */
@@ -24,19 +25,31 @@
  @import "bootstrap";
 
  // Bootstrap body padding for fixed navbar
- body { padding-top: 60px; }
 
  // And finally bootswatch style itself
- @import "bootswatch/cerulean/bootswatch";
+@import "bootswatch/cerulean/bootswatch";
 
 @import url(https://fonts.googleapis.com/css?family=Chewy);
 
-html {
+
+html, body {
   height: 100%;
 }
 
 .container {
-  //  background-color: #a6d640;
+  text-align: center;
+  min-height: 100%;
+}
+
+.content {
+ min-height: 100%;
+ padding-top: 50px;
+}
+
+.navbar.navbar-default.navbar-fixed-top {
+  .container {
+    background-color: #37A7E7;
+  }
 }
 
 li {
@@ -46,17 +59,9 @@ li {
 .field_with_errors input {
   border-color: red
 }
-//
-body {
-  background-image: image-url("PM.jpg");
-  // background-color: #a6d640 !important;
-}
 
-
-.jumbotron {
-    max-width: 80%;
-    margin: auto;
-  background-color: #a6d640 !important;
+.navbar-collapse.collapse.in {
+  text-align: center;
 }
 
 .flash-notice {
@@ -73,14 +78,29 @@ body {
 
 #nav-title {
   color: #6a941b;
-  background-color: white;
+  background-color: #2B2B2B;
   font-family: Chewy;
+  border-radius: 50%;
 }
 
-.navbar.navbar-default.navbar-fixed-top li a{
-    color: #182b69;
+.navbar.navbar-dark.bg-primary.navbar-fixed-top {
+  height: 20px;
 }
 
+.navbar.navbar-dark.bg-primary.navbar-fixed-top li a{
+  color: white;
+  padding-bottom: 0px;
+}
+
+.navbar.navbar-dark.bg-primary.navbar-fixed-top li a:hover {
+  background-color: #0038ff;
+  padding-bottom: 0px;
+  height: 100%
+}
+
+.nav.navbar-nav.navbar-right button {
+  margin: 5px;
+}
 
 .control-label {
   display: block;
@@ -89,4 +109,32 @@ body {
 .checkbox {
   display: inline;
   margin: 5px;
+}
+
+.btn.btn-social.btn-github {
+  width: 190px;
+  padding-right: 0px;
+  padding-left: 30px;
+}
+
+footer {
+  padding: 25px 0;
+  text-align: center;
+  width: 100%;
+  background: #2A2A2A;
+  color: #fff;
+  overflow: hidden;
+  position: relative;;
+  bottom: 0px;
+  margin-bottom: 0px;
+}
+
+footer a {
+ font-size: 15px;
+ color: #555;
+}
+
+footer a:hover {
+ color: #fff;
+ text-decoration: none;
 }

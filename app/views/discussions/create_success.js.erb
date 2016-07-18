@@ -1,0 +1,7 @@
+var $newDiscussion = $("<%= j(render('/discussions/discussion', {discussion: @discussion})) %>")
+$('#discussions').prepend($newDiscussion)
+
+$newDiscussion.hide().slideDown(1000);
+
+<% @discussion = Discussion.new %>
+$('#discussion-form').html('<%= j render "form" %>')

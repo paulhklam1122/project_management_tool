@@ -1,35 +1,58 @@
-<h1>Project Details</h1>
-<p>Created by: <%= @project.user.full_name if @project.user %></p>
-<%= @project.title %><br>
-<%= @project.description %><br>
-<%= @project.due_date %><br>
-<p>Tags: <%= @project.tags.map {|t| t.title.capitalize}.join(", ") %></p>
+<div class="container">
+  <h1>Project Details</h1>
+  <p>Created by: <%= @project.user.full_name if @project.user %></p>
+  <%= @project.title %><br>
+  <%= @project.description %><br>
+  <%= @project.due_date %><br>
+  <p>Tags: <%= @project.tags.map {|t| t.title.capitalize}.join(", ") %></p>
 
-<%= link_to "New Team", new_project_team_path(@project) %> |
-<%= link_to "Edit Team", edit_project_teams_path(@project) %>
+  <%= link_to "New Team", new_project_team_path(@project) %> |
+  <%= link_to "Edit Team", edit_project_teams_path(@project) %>
 
-<div>
-<% Team.where(project_id: @project).each do |member| %>
-  <% u = User.find member.user_id %>
-  <%= "#{u.first_name} #{u.last_name}" %>
-<% end %>
+  <div>
+  <% Team.where(project_id: @project).each do |member| %>
+    <% u = User.find member.user_id %>
+    <%= "#{u.first_name} #{u.last_name}" %>
+  <% end %>
+  </div>
+
+  <div>
+  <% if @project.favourited_by?(current_user) %>
+    <%= link_to fa_icon("heart"), project_favourite_path(@project, @project.favourite_for(current_user)), method: :delete, class: "like-icon" %>
+  <% else %>
+    <%= link_to fa_icon("heart-o"), project_favourites_path(@project), method: :post, class: "like-icon" %>
+  <% end %>
+  </div>
+
+  <% if can? :manage, @project %>
+  <%= link_to "Edit", edit_project_path(@project) %>
+  <%= link_to "Delete", project_path(@project), method: :delete,
+                                                  data: {confirm: "Are you sure?"} %>
+  <% end %>
+
+  <div id="discussion-form">
+      <%= render "discussions/form" %>
+  </div>
+
+  <% if @project.discussions.exists? %>
+    <h2>Discussions</h2>
+  <% end %>
+  <div id="discussions">
+    <% @project.discussions.each do |discussion| %>
+      <%= render "discussions/discussion", discussion: discussion %>
+    <% end %>
+  </div>
+
+  <div id="task-form">
+    <%= render "tasks/form" %>
+  </div>
+
+  <% if @project.tasks.exists? %>
+    <h2>Tasks</h2>
+  <% end %>
+  <div id="tasks">
+    <% @project.tasks.each do |task| %>
+      <%= render "tasks/task", task: task %>
+    <% end %>
+  </div>
 </div>
-
-<div>
-<% if @project.favourited_by?(current_user) %>
-  <%= link_to fa_icon("heart"), project_favourite_path(@project, @project.favourite_for(current_user)), method: :delete, class: "like-icon" %>
-<% else %>
-  <%= link_to fa_icon("heart-o"), project_favourites_path(@project), method: :post, class: "like-icon" %>
-<% end %>
-</div>
-
-<% if can? :manage, @project %>
-<%= link_to "Edit", edit_project_path(@project) %>
-<%= link_to "Delete", project_path(@project), method: :delete,
-                                                data: {confirm: "Are you sure?"} %>
-<% end %>
-
-<%= render "new_discussion" %>
-<%= render "discussions" %>
-<%= render "new_task" %>
-<%= render "tasks" %>

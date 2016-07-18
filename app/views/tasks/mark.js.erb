@@ -1,0 +1,8 @@
+  event.preventDefault();
+  console.log('show value');
+  
+  if ($('#<%= dom_id(@task) %> .button').val() === "Undone") {
+     $('#<%= dom_id(@task) %> .button').val("Done")
+   } else {
+     $('#<%= dom_id(@task) %> .button').val("Undone")
+   }

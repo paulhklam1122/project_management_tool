@@ -1,9 +1,0 @@
-<h1>Edit Discussion</h1>
-<%= @discussion.errors.full_messages.join(", ") %>
-<%= bootstrap_form_for [@project, @discussion] do |f| %>
-  <div class="text-left" >
-    <%= f.text_area :title %>
-    <%= f.text_area :body %>
-  </div>
-    <%= f.submit class: "btn btn-default btn-primary"%>
-<% end %>
