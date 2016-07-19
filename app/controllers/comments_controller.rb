@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @comment.discussion = @discussion
     respond_to do |format|
       if @comment.save
-        # CommentsMailer.notify_discussion_owner(@comment).deliver_now if should_notify?
+        CommentsMailer.notify_discussion_owner(@comment).deliver_now if should_notify?
         format.html {redirect_to project_discussion_path(@project, @discussion)}
         format.js {render :create_success}
       else
