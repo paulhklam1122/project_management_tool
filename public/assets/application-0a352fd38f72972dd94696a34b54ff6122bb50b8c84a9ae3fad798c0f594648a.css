@@ -2356,10 +2356,10 @@
 }
 /* line 7, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
 .bg {
-  background: url("PM.jpg") no-repeat center center;
+  background-image: url(/assets/PM-4075cc9c1ea7fc73dcc019bd019f77a113e28154164090afcf1287680a9b4e21.jpg);
   position: fixed;
   width: 100%;
-  height: 910px;
+  height: 780px;
   /*same height as jumbotron */
   top: 0;
   left: 0;
@@ -2369,12 +2369,12 @@
   -o-background-size: cover;
   -ms-background-size: cover;
   background-size: cover;
-  margin-top: 50px;
+  margin-top: 0px;
 }
 
-/* line 23, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
+/* line 24, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
 .jumbotron {
-  height: 910px;
+  height: 780px;
   color: white;
   text-shadow: #444 0 1px 1px;
   margin-bottom: -250px;
@@ -2386,12 +2386,12 @@
   -o-transition-property: background-position;
 }
 
-/* line 36, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
+/* line 37, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
 .container .jumbotron {
   background: transparent;
 }
 
-/* line 40, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
+/* line 41, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
 .btn.project {
   text-align: center;
   vertical-align: middle;
@@ -2415,13 +2415,13 @@
   box-shadow: none;
 }
 
-/* line 63, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
+/* line 64, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
 .btn.project:hover {
   background-color: #FBFBFB;
   color: black;
 }
 
-/* line 68, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
+/* line 69, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
 .btn.register {
   text-align: center;
   vertical-align: middle;
@@ -2445,15 +2445,15 @@
   box-shadow: none;
 }
 
-/* line 91, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
+/* line 92, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
 .btn.register:hover {
   background-color: #FBFBFB;
   color: black;
 }
 
-/* line 97, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
+/* line 98, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/home.scss */
 #jumbotron-text {
-  margin-top: 250px;
+  margin-top: 190px;
   font-weight: 100;
   text-transform: uppercase;
   font-family: 'Open Sans', 'Verdana', 'Helvetica', sans-serif;
@@ -10665,57 +10665,64 @@ button.close {
 }
 
 /* line 35, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
-html, body {
-  height: 100%;
+html {
+  min-height: 100%;
 }
 
 /* line 39, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+body {
+  min-height: 100%;
+}
+
+/* line 43, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .container {
   text-align: center;
-  min-height: 100%;
 }
 
-/* line 44, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 47, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .content {
-  min-height: 100%;
   padding-top: 50px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: 150px;
 }
 
-/* line 50, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 56, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .navbar.navbar-default.navbar-fixed-top .container {
   background-color: #37A7E7;
 }
 
-/* line 55, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 61, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 li {
   list-style-type: none;
 }
 
-/* line 59, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 65, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .field_with_errors input {
   border-color: red;
 }
 
-/* line 63, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 69, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .navbar-collapse.collapse.in {
   text-align: center;
 }
 
-/* line 67, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 73, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .flash-notice {
   width: 100%;
   height: 40px;
   background-color: green;
 }
 
-/* line 73, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 79, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .flash-alert {
   width: 100%;
   height: 40px;
   background-color: red;
 }
 
-/* line 79, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 85, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 #nav-title {
   color: #6a941b;
   background-color: #2B2B2B;
@@ -10723,48 +10730,48 @@ li {
   border-radius: 50%;
 }
 
-/* line 86, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 92, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .navbar.navbar-dark.bg-primary.navbar-fixed-top {
   height: 20px;
 }
 
-/* line 90, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 96, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .navbar.navbar-dark.bg-primary.navbar-fixed-top li a {
   color: white;
   padding-bottom: 0px;
 }
 
-/* line 95, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 101, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .navbar.navbar-dark.bg-primary.navbar-fixed-top li a:hover {
   background-color: #0038ff;
   padding-bottom: 0px;
   height: 100%;
 }
 
-/* line 101, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 107, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .nav.navbar-nav.navbar-right button {
   margin: 5px;
 }
 
-/* line 105, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 111, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .control-label {
   display: block;
 }
 
-/* line 109, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 115, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .checkbox {
   display: inline;
   margin: 5px;
 }
 
-/* line 114, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 120, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .btn.btn-social.btn-github {
   width: 190px;
   padding-right: 0px;
   padding-left: 30px;
 }
 
-/* line 120, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 126, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 footer {
   padding: 25px 0;
   text-align: center;
@@ -10772,24 +10779,25 @@ footer {
   background: #2A2A2A;
   color: #fff;
   overflow: hidden;
-  position: absolute;
   bottom: 0px;
   margin-bottom: 0px;
+  width: 100;
+  position: fixed;
 }
 
-/* line 132, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 139, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 footer a {
   font-size: 15px;
   color: #555;
 }
 
-/* line 137, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 144, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 footer a:hover {
   color: #fff;
   text-decoration: none;
 }
 
-/* line 142, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
+/* line 149, /Users/Paul/codecore-bootcamp/rails/pm_tool/app/assets/stylesheets/application.scss */
 .glyphicon.glyphicon-home {
   margin-right: 5px;
 }
