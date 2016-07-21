@@ -1,11 +1,13 @@
-<h1>Edit User Information</h1>
-<%= @user.errors.full_messages.join(", ") %>
-<%= simple_form_for @user do |f| %>
-  <div class="text-left" >
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :email %>
-  </div>
-  <%= f.button :submit, class: "btn btn-default btn-primary" %>
-  <%= link_to "Change Password", change_password_path %>
-<% end %>
+<div class="container">
+  <h1>Edit User Information</h1>
+  <%= @user.errors.full_messages.join(", ") %>
+  <%= simple_form_for @user do |f| %>
+    <div class="text-left" >
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :email %>
+    </div>
+    <%= f.button :submit, class: "btn btn-default btn-primary" %>
+    <%= link_to "Change Password", change_password_path %>
+  <% end %>
+</div>

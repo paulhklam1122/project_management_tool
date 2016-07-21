@@ -10,10 +10,10 @@
   <%= link_to "Edit Team", edit_project_teams_path(@project) %>
 
   <div>
-  <% Team.where(project_id: @project).each do |member| %>
-    <% u = User.find member.user_id %>
-    <%= "#{u.first_name} #{u.last_name}" %>
-  <% end %>
+    <% Team.where(project_id: @project).each do |member| %>
+      <% u = User.find member.user_id %>
+      <%= "#{u.first_name} #{u.last_name}" %>
+    <% end %>
   </div>
 
   <div>

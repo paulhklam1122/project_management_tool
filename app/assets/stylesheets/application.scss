@@ -32,18 +32,24 @@
 @import url(https://fonts.googleapis.com/css?family=Chewy);
 
 
-html, body {
-  height: 100%;
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
 }
 
 .container {
   text-align: center;
-  min-height: 100%;
 }
 
 .content {
- min-height: 100%;
  padding-top: 50px;
+ min-height: 100%;
+ height: auto !important;
+ height: 100%;
+ margin-bottom: 150px;
 }
 
 .navbar.navbar-default.navbar-fixed-top {
@@ -124,9 +130,10 @@ footer {
   background: #2A2A2A;
   color: #fff;
   overflow: hidden;
-  position: absolute;
   bottom: 0px;
   margin-bottom: 0px;
+  width: 100;
+  position: fixed;
 }
 
 footer a {
